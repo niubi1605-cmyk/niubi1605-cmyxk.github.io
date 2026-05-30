@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线视频播放站</title>
+    <!-- 引入 hls.js 库，用来解析和播放 m3u8 视频 -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: sans-serif;
+            background: #f0f2f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+        }
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 30px;
+        }
+        .video-box {
+            margin: 25px 0;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .video-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        video {
+            width: 100%;
+            border-radius: 6px;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 在线视频合集</h1>
+
+        <!-- 视频一 -->
+        <div class="video-box">
+            <div class="video-title">真实破处女友的妹妹处女18岁无套内射</div>
+            <video id="video1" controls preload="metadata"></video>
+        </div>
+
+        <!-- 视频二 -->
+        <div class="video-box">
+            <div class="video-title">视频二</div>
+            <video id="video2" controls preload="metadata"></video>
+        </div>
+
+        <!-- 视频三 -->
+        <div class="video-box">
+            <div class="video-title">视频三</div>
+            <video id="video3" controls preload="metadata"></video>
+        </div>
+
+        <!-- 视频四 -->
+        <div class="video-box">
+            <div class="video-title">视频四</div>
+            <video id="video4" controls preload="metadata"></video>
+        </div>
+
+        <!-- 视频五 -->
+        <div class="video-box">
+            <div class="video-title">视频五</div>
+            <video id="video5" controls preload="metadata"></video>
+        </div>
+
+        <!-- 视频六 -->
+        <div class="video-box">
+            <div class="video-title">视频六</div>
+            <video id="video6" controls preload="metadata"></video>
+        </div>
+
+        <!-- 视频七 -->
+        <div class="video-box">
+            <div class="video-title">视频七</div>
+            <video id="video7" controls preload="metadata"></video>
+        </div>
+
+        <!-- 视频八 -->
+        <div class="video-box">
+            <div class="video-title">视频八</div>
+            <video id="video8" controls preload="metadata"></video>
+        </div>
+
+        <!-- 视频九 -->
+        <div class="video-box">
+            <div class="video-title">视频九</div>
+            <video id="video9" controls preload="metadata"></video>
+        </div>
+
+        <!-- 视频十 -->
+        <div class="video-box">
+            <div class="video-title">视频十</div>
+            <video id="video10" controls preload="metadata"></video>
+        </div>
+
+        <!-- 视频十一 -->
+        <div class="video-box">
+            <div class="video-title">视频十一</div>
+            <video id="video11" controls preload="metadata"></video>
+        </div>
+
+        <!-- 视频十二 -->
+        <div class="video-box">
+            <div class="video-title">视频十二</div>
+            <video id="video12" controls preload="metadata"></video>
+        </div>
+    </div>
+
+    <script>
+        // 这里填写你的 m3u8 视频链接，#后面的文字方便你区分
+        const videoSources = [
+            "https://example.com/video1.m3u8#https://lsbbf9.com/20260319/pojTCkTV/index.m3u8",
+            "https://example.com/video2.m3u8#视频二播放链接",
+            "https://example.com/video3.m3u8#视频三播放链接",
+            "https://example.com/video4.m3u8#视频四播放链接",
+            "https://example.com/video5.m3u8#视频五播放链接",
+            "https://example.com/video6.m3u8#视频六播放链接",
+            "https://example.com/video7.m3u8#视频七播放链接",
+            "https://example.com/video8.m3u8#视频八播放链接",
+            "https://example.com/video9.m3u8#视频九播放链接",
+            "https://example.com/video10.m3u8#视频十播放链接",
+            "https://example.com/video11.m3u8#视频十一播放链接",
+            "https://example.com/video12.m3u8#视频十二播放链接"
+        ];
+
+        // 加载并播放每个视频
+        videoSources.forEach((src, index) => {
+            const videoEl = document.getElementById(`video${index + 1}`);
+            const cleanSrc = src.split('#')[0]; // 去掉#后面的标记，只保留视频链接
+
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(cleanSrc);
+                hls.attachMedia(videoEl);
+                hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                    console.log(`视频${index + 1}加载成功`);
+                });
+            } else if (videoEl.canPlayType('application/vnd.apple.mpegurl')) {
+                // 兼容 Safari 浏览器
+                videoEl.src = cleanSrc;
+            }
+        });
+    </script>
+</body>
+</html>
